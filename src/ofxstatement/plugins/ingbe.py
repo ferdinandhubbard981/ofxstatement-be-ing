@@ -1,5 +1,4 @@
 import csv
-
 from ofxstatement import statement
 from ofxstatement.plugin import Plugin
 from ofxstatement.parser import CsvStatementParser
@@ -11,7 +10,7 @@ class IngBePlugin(Plugin):
     """
 
     def get_parser(self, filename):
-        f = open(filename, 'r', encoding=self.settings.get("charset", "ISO-8859-1"))
+        f = open(filename, 'r', encoding="utf-8")
         parser = IngBeParser(f)
         return parser
 
@@ -20,7 +19,7 @@ class IngBeParser(CsvStatementParser):
     date_format = "%d/%m/%Y"
     mappings = {
         'check_no': 3,
-        'date': 5,
+        'date': 4,
         'payee': 2,
         'memo': 8,
         'amount': 6
